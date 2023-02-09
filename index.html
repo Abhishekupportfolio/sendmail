@@ -7,6 +7,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Email sender  App</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
 </head>
 
 <body>
@@ -15,7 +29,7 @@
     <div class="contact-form section-gap">
       <div class="wrapper">
         <div class="text-center">
-        <h1 style="font-size: 40px; " >Contact Us</h1>
+        <h1 style="font-size: 40px; color:gray" ><strong>Contact to Abhishek</strong> </h1>
       </div>
         <div class="contact-form" style="max-width: 450px; margin: 0 auto;">
           <div class="form-mid">
@@ -25,7 +39,7 @@
               </div>
               <div class="field">
                 <input type="email" class="form-control" name="Sender" id="Sender" placeholder="Email"
-                  required="">
+                  required="Email required">
               </div>
               <div class="field">
                 <input type="text" class="form-control" name="Subject" id="Subject" placeholder="Subject"
@@ -44,31 +58,33 @@
   </section>
   <!-- /contact1 -->
   
-<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+
 <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
  
-<script>  
+<script >  
+
 
      function sendmail(){
     
 			var name = $("#Name").val();
 			var email = $("#Sender").val();
 			var subject = $("#Subject").val();
-            var message = $("#Message").val();
+      var message = $("#Message").val();
 
-			// var body = $('#body').val();
+			
 
 			var Body='Name: '+name+'<br>Email: '+email+'<br>Subject: '+subject+'<br>Message: '+message;
 		
 
 			Email.send({
-                Host : "smtp.elasticemail.com",
-                Username : "abhishek.scoe.it@gmail.com",
-                Password : "CFE7BA6A00B9D173F9809F9C0433A7F62C57",
+        SecureToken:"dfe83139-20f1-4bbf-8439-07e613be950c" ,
 				To: 'pandeabhishek9623@gmail.com',
 				From: "abhishek.scoe.it@gmail.com",
 				Subject: "New message on contact from "+name,
@@ -77,15 +93,35 @@
 				message =>{
 					//console.log (message);
 					if(message=='OK'){
-					alert('Your mail has been send. Thank you for connecting.');
-					}
+					
+          Swal.fire(
+                'Good job!',
+                'Your mail has been send. Thank you for connecting with Abhishek pande',
+                'success'
+          ).then(OK=>{
+             
+            if (OK) {
+              window.location.reload();
+            }
+
+          });
+        
+        
+        
+        }
 					else{
 						console.error (message);
 						alert('There is error at sending message. ')
-						
+            Swal.fire(
+                'Failed!',
+                'There is error at sending message.Please try again',
+                'error'
+)
+					}
+        
 					}
 
-				}
+				
 			);
 
 
